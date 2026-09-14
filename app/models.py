@@ -10,3 +10,7 @@ class Character(Base):
   name: Mapped[str]
   level: Mapped[int]
   gold: Mapped[int]
+
+  def __repr__(self):
+    return f'Character(id={self.id}, name={self.name}, level={self.level}, gold={self.gold})'
+  
