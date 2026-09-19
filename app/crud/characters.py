@@ -4,14 +4,13 @@ from models import Character
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 
-class Crud():
+class CharacterCrud():
   def __init__(self, session: Session):
     self.session = session
 
   def add(self, **kwargs) -> Character:
     character = Character(**kwargs)
     self.session.add(character)
-    self.session.commit()
     return character
 
   def update(self, **kwargs) -> Character | None:
@@ -27,8 +26,6 @@ class Crud():
     for key, value in kwargs.items():
       if key in allowed_fields:
         setattr(character, key, value)
-
-    self.session.commit()
     return character
 
   def delete(self, **kwargs) -> Character | None:
@@ -36,7 +33,6 @@ class Crud():
 
     if character:
       self.session.delete(character)
-      self.session.commit()
 
     return character
 
