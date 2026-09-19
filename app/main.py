@@ -13,7 +13,7 @@ def app():
     print('GET', crud.get(name='Grimma'))
     print('UPDATE', crud.update(id=character.id, name='Lah Ghar', level=2, gold=50))
     print('LIST', crud.list())
-    # print('DELETE', crud.delete(id = character.id))
+    print('DELETE', crud.delete(id = character.id))
 
 if __name__ == '__main__':
   app()
