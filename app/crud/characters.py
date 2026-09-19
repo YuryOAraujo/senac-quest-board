@@ -26,6 +26,7 @@ class CharacterCrud():
     for key, value in kwargs.items():
       if key in allowed_fields:
         setattr(character, key, value)
+
     return character
 
   def delete(self, **kwargs) -> Character | None:
@@ -37,11 +38,9 @@ class CharacterCrud():
     return character
 
   def list(self) -> List[Character]:
-    statement = select(Character)
-    
+    statement = select(Character)    
     return self.session.scalars(statement).all()
 
   def get(self, **kwargs) -> Character | None:
     statement = select(Character).filter_by(**kwargs)
-
     return self.session.scalars(statement).first()

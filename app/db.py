@@ -10,6 +10,6 @@ DATABASE_URL = os.getenv(
   'postgresql+psycopg://postgres:password@localhost:5432/quest_board'
 )
 
-engine = create_engine(DATABASE_URL, echo=True)
+engine = create_engine(DATABASE_URL)
 
 SessionLocal = sessionmaker(bind=engine)
