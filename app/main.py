@@ -1,6 +1,6 @@
 from crud.quests import QuestCrud
 from crud.characters import CharacterCrud
-from models import Base
+from models import Base, CharacterQuest
 from db import engine, SessionLocal
 
 def app():
@@ -14,7 +14,7 @@ def app():
     print('GET', crud.get(name='Grimma'))
     print('UPDATE', crud.update(id=character.id, name='Lah Ghar', level=2, gold=50))
     print('LIST', crud.list())
-    print('DELETE', crud.delete(id = character.id))
+    # print('DELETE', crud.delete(id = character.id))
 
     crud = QuestCrud(session)
 
@@ -23,7 +23,10 @@ def app():
     print('GET', crud.get(title='Quest 1'))
     print('UPDATE', crud.update(id=quest.id, title='New Title', description='New Description', reward=200))
     print('LIST', crud.list())
-    print('DELETE', crud.delete(id=quest.id))
+    # print('DELETE', crud.delete(id=quest.id))
+
+    character.assigned_quests.append(CharacterQuest(character_id=character.id, quest_id=quest.id, is_completed=True))
+    print('CHARACTER', character)
 
 if __name__ == '__main__':
   app()
