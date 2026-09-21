@@ -38,6 +38,7 @@ class CharacterQuest(Base):
   character_id: Mapped[int] = mapped_column(ForeignKey('characters.id'), primary_key=True)
   quest_id: Mapped[int] = mapped_column(ForeignKey('quests.id'), primary_key=True)
   is_completed: Mapped[bool] = mapped_column(default=False)
+  is_reward_claimed: Mapped[bool] = mapped_column(default=False)
 
   character: Mapped[List['Character']] = relationship(back_populates='assigned_quests')
   quest: Mapped[List['Quest']] = relationship(back_populates='assigned_characters')

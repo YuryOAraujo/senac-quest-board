@@ -1,4 +1,4 @@
-from game import unassign_quest
+from game import claim_rewards, complete_quest, unassign_quest
 from crud.quests import QuestCrud
 from crud.characters import CharacterCrud
 from models import Base, CharacterQuest
@@ -28,11 +28,13 @@ def app():
       # print('LIST', crud.list())
       # # print('DELETE', crud.delete(id=quest.id))
 
-      # character.assigned_quests.append(CharacterQuest(character_id=character.id, quest_id=quest.id, is_completed=True))
+      # character.assigned_quests.append(CharacterQuest(character_id=character.id, quest_id=quest.id, is_completed=False))
       # print('CHARACTER', character)
+      complete_quest(session, 12, 12)
+      # claim_rewards(session, 13, 13)
       
       # unassign_quest(session, 4, 4)
-      unassign_quest(session, 3, 3)
+      # unassign_quest(session, 3, 3)
   except Exception as e:
     print('Error:', e)
 
