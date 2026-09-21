@@ -10,29 +10,29 @@ def app():
 
   try:
     with SessionLocal.begin() as session:
-      crud = CharacterCrud(session)
-      character = crud.add(name='Grimma', level=1, gold=100)
+      # crud = CharacterCrud(session)
+      # character = crud.add(name='Grimma', level=1, gold=100)
 
-      print('ADD', character)
-      print('GET', crud.get(name='Grimma'))
-      print('UPDATE', crud.update(id=character.id, name='Lah Ghar', level=2, gold=50))
-      print('LIST', crud.list())
-      # print('DELETE', crud.delete(id = character.id))
+      # print('ADD', character)
+      # print('GET', crud.get(name='Grimma'))
+      # print('UPDATE', crud.update(id=character.id, name='Lah Ghar', level=2, gold=50))
+      # print('LIST', crud.list())
+      # # print('DELETE', crud.delete(id = character.id))
 
-      crud = QuestCrud(session)
+      # crud = QuestCrud(session)
 
-      quest = crud.add(title='Quest 1', description='Description', reward=100)
-      print('ADD', quest)
-      print('GET', crud.get(title='Quest 1'))
-      print('UPDATE', crud.update(id=quest.id, title='New Title', description='New Description', reward=200))
-      print('LIST', crud.list())
-      # print('DELETE', crud.delete(id=quest.id))
+      # quest = crud.add(title='Quest 1', description='Description', reward=100)
+      # print('ADD', quest)
+      # print('GET', crud.get(title='Quest 1'))
+      # print('UPDATE', crud.update(id=quest.id, title='New Title', description='New Description', reward=200))
+      # print('LIST', crud.list())
+      # # print('DELETE', crud.delete(id=quest.id))
 
-      character.assigned_quests.append(CharacterQuest(character_id=character.id, quest_id=quest.id, is_completed=True))
-      print('CHARACTER', character)
+      # character.assigned_quests.append(CharacterQuest(character_id=character.id, quest_id=quest.id, is_completed=True))
+      # print('CHARACTER', character)
       
       # unassign_quest(session, 4, 4)
-      # unassign_quest(session, 3, 3)
+      unassign_quest(session, 3, 3)
   except Exception as e:
     print('Error:', e)
 

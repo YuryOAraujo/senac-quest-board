@@ -11,7 +11,8 @@ def claim_rewards(session: Session, character_id: int, quest_id: int):
   pass
 
 def unassign_quest(session: Session, character_id: int, quest_id: int) -> CharacterQuest:
-  assigned_quest = session.scalars(select(CharacterQuest).where(CharacterQuest.character_id == character_id, CharacterQuest.quest_id == quest_id)).first()
+  # assigned_quest = session.scalars(select(CharacterQuest).where(CharacterQuest.character_id == character_id, CharacterQuest.quest_id == quest_id)).first()
+  assigned_quest = session.get(CharacterQuest, (character_id, quest_id))
 
   if assigned_quest is None:
     raise QuestAssignmentNotFoundError('The quest that you seem to be looking for, could not be found.')
