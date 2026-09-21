@@ -1,7 +1,9 @@
+from game import unassign_quest
 from crud.quests import QuestCrud
 from crud.characters import CharacterCrud
 from models import Base, CharacterQuest
 from db import engine, SessionLocal
+
 
 def app():
   Base.metadata.create_all(engine)
