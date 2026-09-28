@@ -1,3 +1,4 @@
 sqlalchemy
 dotenv
 psycopg
+pytest
