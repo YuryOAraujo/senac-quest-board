@@ -11,6 +11,7 @@ class CharacterCrud():
   def add(self, **kwargs) -> Character:
     character = Character(**kwargs)
     self.session.add(character)
+    self.session.flush()
     return character
 
   def update(self, **kwargs) -> Character | None:
@@ -27,6 +28,7 @@ class CharacterCrud():
       if key in allowed_fields:
         setattr(character, key, value)
 
+    self.session.flush()
     return character
 
   def delete(self, **kwargs) -> Character | None:
@@ -34,7 +36,7 @@ class CharacterCrud():
 
     if character:
       self.session.delete(character)
-
+      self.session.flush()
     return character
 
   def list(self) -> List[Character]:

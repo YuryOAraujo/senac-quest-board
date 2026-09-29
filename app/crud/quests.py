@@ -11,6 +11,7 @@ class QuestCrud():
   def add(self, **kwargs) -> Quest: 
     quest = Quest(**kwargs)
     self.session.add(quest)
+    self.session.flush()
     return quest
 
   def list(self) -> List[Quest]:
@@ -26,6 +27,7 @@ class QuestCrud():
 
     if quest:
       self.session.delete(quest)
+      self.session.flush()
 
     return quest
 
@@ -43,4 +45,5 @@ class QuestCrud():
       if key in allowed_fields:
         setattr(quest, key, value)
 
+    self.session.flush()
     return quest
