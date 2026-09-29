@@ -1,4 +1,4 @@
-from game import claim_rewards, complete_quest, unassign_quest
+from game import _claim_rewards, complete_quest, unassign_quest
 from crud.quests import QuestCrud
 from crud.characters import CharacterCrud
 from models import Base, CharacterQuest
