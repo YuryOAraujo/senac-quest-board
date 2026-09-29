@@ -18,26 +18,29 @@ def session():
 @pytest.fixture
 def character(session: Session):
   character = Character(name='Grimma', level=1, gold=5)
-
   session.add(character)
-  session.commit()
-
+  session.flush()
+  
   return character
 
 def test_character_creation(session: Session):
   crud = CharacterCrud(session)
-  character = crud.add(name='Grimma', level=1, gold=5)
-  assert character.id is not None
+  found_character = crud.add(name='Grimma', level=1, gold=5)
+  assert found_character.id is not None
 
 def test_get_character(session: Session, character: Character):
   crud = CharacterCrud(session)
   character = crud.get(id=character.id)
-  assert character.id is not None
 
-def test_list_characters(session: Session):
+  assert character.id is not None
+  assert character.name == 'Grimma'
+  assert character.level == 1
+  assert character.gold == 5
+
+def test_list_characters(session: Session, character):
   crud = CharacterCrud(session)
   characters = crud.list()
-  assert len(characters) >= 1
+  assert character in characters
 
 def test_update_character(session: Session, character: Character):
   crud = CharacterCrud(session)
