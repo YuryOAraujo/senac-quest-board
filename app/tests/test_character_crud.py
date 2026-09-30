@@ -16,7 +16,7 @@ def session():
     session.close()
 
 @pytest.fixture
-def character(session: Session):
+def character(session: Session) -> Character:
   character = Character(name='Grimma', level=1, gold=5)
   session.add(character)
   session.flush()
@@ -24,7 +24,7 @@ def character(session: Session):
   return character
 
 @pytest.fixture
-def crud(session: Session):
+def crud(session: Session) -> CharacterCrud:
   return CharacterCrud(session)
 
 def test_character_creation(crud: CharacterCrud):
@@ -39,7 +39,7 @@ def test_get_character(crud: CharacterCrud, character: Character):
   assert found_character.level == 1
   assert found_character.gold == 5
 
-def test_list_characters(crud: CharacterCrud, character):
+def test_list_characters(crud: CharacterCrud, character: Character):
   characters = crud.list()
   assert character in characters
 
