@@ -28,16 +28,16 @@ def crud(session: Session):
   return CharacterCrud(session)
 
 def test_character_creation(crud: CharacterCrud):
-  found_character = crud.add(name='Grimma', level=1, gold=5)
-  assert found_character.id is not None
+  character = crud.add(name='Grimma', level=1, gold=5)
+  assert character.id is not None
 
 def test_get_character(crud: CharacterCrud, character: Character):
-  character = crud.get(id=character.id)
+  found_character = crud.get(id=character.id)
 
-  assert character.id is not None
-  assert character.name == 'Grimma'
-  assert character.level == 1
-  assert character.gold == 5
+  assert found_character.id is not None
+  assert found_character.name == 'Grimma'
+  assert found_character.level == 1
+  assert found_character.gold == 5
 
 def test_list_characters(crud: CharacterCrud, character):
   characters = crud.list()
