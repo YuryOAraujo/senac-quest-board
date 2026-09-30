@@ -29,6 +29,7 @@ def crud(session: Session) -> CharacterCrud:
 
 def test_character_creation(crud: CharacterCrud):
   character = crud.add(name='Grimma', level=1, gold=5)
+  
   assert character.id is not None
 
 def test_get_character(crud: CharacterCrud, character: Character):
