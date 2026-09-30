@@ -5,20 +5,32 @@ from sqlalchemy.orm import Session
 from models import Quest
 from crud.quests import QuestCrud
 
+from db import SessionLocal
+
 @pytest.fixture
 def session():
-  pass
+  session = SessionLocal()
+
+  try:
+    yield session
+  finally:
+    session.rollback()
+    session.close()
 
 @pytest.fixture
 def quest(session: Session) -> Quest:
-  pass
+  quest = Quest(title='First Quest', description='Your journey belongs here', reward=100)
+  session.add(quest)
+  session.flush()
+  return quest
 
 @pytest.fixture
 def crud(session: Session) -> QuestCrud:
-  pass
+  return QuestCrud(session)
 
 def test_quest_creation(crud: QuestCrud):
-  pass
+  quest = crud.add(title='First Quest', description='Your journey belongs here', reward=100)
+  assert quest.id is not None
 
 def test_get_quest(crud: QuestCrud):
   pass
