@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import select
 
 from models import Character, Quest, CharacterQuest
-from exceptions import QuestAssignmentNotFoundError, QuestAlreadyCompletedError, QuestNotCompleted, RewardAlreadyClaimedError
+from exceptions import QuestAssignmentNotFoundError, QuestAlreadyCompletedError, QuestNotCompletedError, RewardAlreadyClaimedError
 
 def complete_quest(session: Session, character_id: int, quest_id: int):
   assigned_quest = session.get(CharacterQuest, (character_id, quest_id))
@@ -21,7 +21,7 @@ def _claim_rewards(assigned_quest: CharacterQuest):
     raise QuestAssignmentNotFoundError('The quest assignment that you seem to be looking for, could not be found.')
 
   if not assigned_quest.is_completed:
-    raise QuestNotCompleted('You are not able to claim rewards, of an uncompleted quest.')
+    raise QuestNotCompletedError('You are not able to claim rewards, of an uncompleted quest.')
 
   if assigned_quest.is_reward_claimed:
     raise RewardAlreadyClaimedError('This reward already has been claimed by this character.')

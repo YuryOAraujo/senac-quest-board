@@ -7,5 +7,5 @@ class QuestAssignmentNotFoundError(Exception):
 class RewardAlreadyClaimedError(Exception):
   pass
 
-class QuestNotCompleted(Exception):
+class QuestNotCompletedError(Exception):
   pass
