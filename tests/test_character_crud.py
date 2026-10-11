@@ -1,9 +1,9 @@
 import pytest
 
-from models import Character
-from crud.characters import CharacterCrud
+from app.models import Character
+from app.crud.characters import CharacterCrud
 from sqlalchemy.orm import Session
-from db import SessionLocal
+from app.db import SessionLocal
 
 @pytest.fixture
 def session():

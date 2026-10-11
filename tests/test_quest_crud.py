@@ -2,10 +2,10 @@ import pytest
 
 from sqlalchemy.orm import Session
 
-from models import Quest
-from crud.quests import QuestCrud
+from app.models import Quest
+from app.crud.quests import QuestCrud
 
-from db import SessionLocal
+from app.db import SessionLocal
 
 @pytest.fixture
 def session():

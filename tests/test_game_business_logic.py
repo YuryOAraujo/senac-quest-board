@@ -1,12 +1,12 @@
 import pytest
 
-from crud.characters import CharacterCrud
-from crud.quests import QuestCrud
-from models import Character, Quest, CharacterQuest
-from db import SessionLocal
+from app.crud.characters import CharacterCrud
+from app.crud.quests import QuestCrud
+from app.models import Character, Quest, CharacterQuest
+from app.db import SessionLocal
 from sqlalchemy.orm import Session
-import game
-from exceptions import QuestAlreadyCompletedError, QuestAssignmentNotFoundError
+import app.game as game
+from app.exceptions import QuestAlreadyCompletedError, QuestAssignmentNotFoundError
 
 @pytest.fixture
 def session():

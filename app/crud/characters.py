@@ -1,6 +1,6 @@
 from typing import List
 
-from models import Character
+from app.models import Character
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 

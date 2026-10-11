@@ -2,7 +2,7 @@ from typing import List
 
 from sqlalchemy.orm import Session
 from sqlalchemy import select
-from models import Quest
+from app.models import Quest
 
 class QuestCrud():
   def __init__(self, session: Session):

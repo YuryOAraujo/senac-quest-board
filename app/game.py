@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 
-from models import Character, Quest, CharacterQuest
-from exceptions import QuestAssignmentNotFoundError, QuestAlreadyCompletedError, QuestNotCompletedError, RewardAlreadyClaimedError
+from .models import Character, Quest, CharacterQuest
+from .exceptions import QuestAssignmentNotFoundError, QuestAlreadyCompletedError, QuestNotCompletedError, RewardAlreadyClaimedError
 
 def complete_quest(session: Session, character_id: int, quest_id: int):
   assigned_quest = session.get(CharacterQuest, (character_id, quest_id))

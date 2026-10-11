@@ -1,11 +1,11 @@
-from game import _claim_rewards, complete_quest, unassign_quest
-from crud.quests import QuestCrud
-from crud.characters import CharacterCrud
-from models import Base, CharacterQuest
-from db import engine, SessionLocal
+from .game import _claim_rewards, complete_quest, unassign_quest
+from .crud.quests import QuestCrud
+from .crud.characters import CharacterCrud
+from .models import Base, CharacterQuest
+from .db import engine, SessionLocal
 
 
-def app():
+def main():
   Base.metadata.create_all(engine)
 
   try:
@@ -30,14 +30,11 @@ def app():
 
       # character.assigned_quests.append(CharacterQuest(character_id=character.id, quest_id=quest.id, is_completed=False))
       # print('CHARACTER', character)
-      complete_quest(session, 12, 12)
+      # complete_quest(session, 12, 12)
       # claim_rewards(session, 13, 13)
       
       # unassign_quest(session, 4, 4)
       # unassign_quest(session, 3, 3)
+      print('Package imports, currently working!')
   except Exception as e:
     print('Error:', e)
-
-
-if __name__ == '__main__':
-  app()
