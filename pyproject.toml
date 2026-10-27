@@ -1,0 +1,32 @@
+[project]
+name = "senac-quest-board"
+version = "0.1.0"
+description = "Simple class project to study SQLAlchemy persistance, relationships, pytest and FastAPI."
+readme = "README.md"
+authors = [
+    { name = "Yury Araujo", email = "yuryaraujo02@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "dotenv>=0.9.9",
+    "fastapi[binary,standard]>=0.162.0",
+    "psycopg[binary]>=3.3.6",
+    "pytest>=9.1.1",
+    "sqlalchemy>=2.1.6",
+]
+
+[project.scripts]
+senac-quest-board = "app.main:main"
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "app"
+module-root = ""
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]

@@ -1,0 +1,6 @@
+sqlalchemy
+dotenv
+psycopg
+psycopg[binary]
+pytest
+fastapi[standard]
